@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player.cs" type="Script" id=1]
+[ext_resource path="res://Sprites/icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 15 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 302.704, 189.63 )
+collision_mask = 31
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+Speed = 50.0
+MaxSpeed = 200.0
+JumpSpeed = 300.0
+LowGravity = 25.0
+HighGravity = 50.0
+MaxFallSpeed = 400.0
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+position = Vector2( -20, 0 )
+enabled = true
+cast_to = Vector2( 0, 16 )
+collision_mask = 4
+
+[node name="MidRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 16 )
+collision_mask = 4
+
+[node name="RightRay" type="RayCast2D" parent="."]
+position = Vector2( 20, 0 )
+enabled = true
+cast_to = Vector2( 0, 16 )
+collision_mask = 4
